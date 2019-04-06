@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести інформацію про клієнтів (ПІБ клієнта, номер телефону, адреса) 
+    що проконсультувались в певного працівника фірми та придбали путівку в певну країну, 
+    з них вивести інформацію про клієнтів що поселились в певний готель.
+  </p>
+  
+  <form method="POST" action="/query/7">
+    <label for="hotel">Готель:</label>
+    <select name="hotel">
+      <% for (let i of HotelName) { %>
+        <option value="<%=i.HotelName %>">
+          <%=i.HotelName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="employee">ПІБ працівника:</label>
+    <select name="employee">
+      <% for (let i of EmployeeName) { %>
+        <option value="<%=i.EmployeeName %>">
+          <%=i.EmployeeName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="country">Країна:</label>
+    <select name="country">
+      <% for (let i of CountryName) { %>
+        <option value="<%=i.CountryName %>">
+          <%=i.CountryName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

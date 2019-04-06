@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести  інформацію про існуючі путівки (номер путівки, дата відправлення, дата прибуття, кількість днів) з 
+    вказаною найменшою та найбільшою вартістю, з них вибрати путівки маршрут яких спрямовано в певне місто.
+  </p>
+  
+  <form method="POST" action="/query/8">
+    <label for="minPrice">Мінімальна ціна:</label>
+    <select name="minPrice">
+      <% for (let i of TourPrice) { %>
+        <option value="<%=i.TourPrice %>">
+          <%=i.TourPrice %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="maxPrice">Максимальна ціна:</label>
+    <select name="maxPrice">
+      <% for (let i of TourPrice) { %>
+        <option value="<%=i.TourPrice %>">
+          <%=i.TourPrice %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="city">Вартість путівки:</label>
+    <select name="city">
+      <% for (let i of City) { %>
+        <option value="<%=i.City %>">
+          <%=i.City %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

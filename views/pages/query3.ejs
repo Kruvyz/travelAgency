@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести інформацію про країни (назва країни, столиця, валюта, мова спілкування), 
+    до яких продано путівки в заданий період та вартість однієї путівки перевищує задану суму.
+  </p>
+  
+  <form method="POST" action="/query/3">
+    <label for="startDate">Дата 1:</label>
+    <input type="date" name="startDate">
+
+    <label for="endDate">Дата 2:</label>
+    <input type="date" name="endDate">
+
+    <label for="client">Вартість путівки</label>
+    <select name="price">
+      <% for (let i of TourPrice) { %>
+        <option value="<%=i.TourPrice %>">
+          <%=i.TourPrice %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

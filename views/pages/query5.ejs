@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести бланк продажу путівки (номер бланка, дата продажу, номер путівки, 
+    кількість путівок що продається певній особі, сума покупки, знижка, сума зі знижкою), 
+    що виданий певному клієнту вказаним працівником фірми.
+  </p>
+  
+  <form method="POST" action="/query/5">
+    <label for="client">ПІБ клієнта:</label>
+    <select name="client">
+      <% for (let i of ClientName) { %>
+        <option value="<%=i.ClientName %>">
+          <%=i.ClientName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="employee">ПІБ працівника:</label>
+    <select name="employee">
+      <% for (let i of EmployeeName) { %>
+        <option value="<%=i.EmployeeName %>">
+          <%=i.EmployeeName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

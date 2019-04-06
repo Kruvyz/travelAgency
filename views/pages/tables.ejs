@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <title><%=title %></title>
+</head>
+<body>
+  <form id="insert" method="POST" action="/insert/<%=title %>"></form>
+  <table>
+    <tr>
+      <% for (let j in data[0]) { %>
+        <td><%=j %></td>
+      <%} %>
+    </tr>
+    <% for (let i in data) { %>
+      <tr>
+        <% for (let j in data[i]) { %>
+          <td><%=data[i][j] %></td>
+        <%} %>
+        <td>
+            <form method="POST" action="/delete/<%=data[i][id] %>">
+              <input type="hidden" name="tableName" value="<%=title %>">
+              <input type="hidden" name="idName" value="<%=id %>">
+              <input type="submit" value="" class="deleteButton">
+            </form>
+        </td>
+      </tr>
+    <%} %>    
+    <tr>      
+      <% for (let j in data[0]) { %>
+        <td><input class="insertInput" type="text" form="insert" required name="<%=j %>"></td>
+      <%} %> 
+      <td>
+          <input class="insertButton" type="submit" form="insert" value="+">
+      </td>         
+    </tr>
+  </table>  
+  
+</body>
+</html>

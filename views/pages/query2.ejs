@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести суму знижки, яку нараховано певному клієнту за покупку путівки певної вартості.
+  </p>
+  
+  <form method="POST" action="/query/2">
+    <label for="client">ПІБ клієнта</label>
+    <select name="client">
+      <% for (let i of ClientName) { %>
+        <option value="<%=i.ClientName %>">
+          <%=i.ClientName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="client">Вартість путівки</label>
+    <select name="price">
+      <% for (let i of PurchasePrice) { %>
+        <option value="<%=i.PurchasePrice %>">
+          <%=i.PurchasePrice %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

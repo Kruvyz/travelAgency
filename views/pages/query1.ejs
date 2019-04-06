@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести інформацію про працівника фірми (ПІБ працівника, номер трудової книжки, посада), 
+    що продав певну кількість путівок і має певний стаж.
+  </p>
+  
+  <form method="POST" action="/query/1">
+    <label for="experience">Стаж роботи: </label>
+    <select name="experience">
+      <% for (let i of EmployeeExperience) { %>
+        <option value="<%=i.EmployeeExperience %>">
+          <%=i.EmployeeExperience %>
+        </option>coures
+      <% } %> 
+    </select>
+
+    <label for="number">Кількість проданих путівок: </label>
+    <select name="number">
+      <% for (let i of NumbersOfTours) { %>
+        <option value="<%=i.NumbersOfTours %>">
+          <%=i.NumbersOfTours %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>
