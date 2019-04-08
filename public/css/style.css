@@ -3,6 +3,7 @@ body {
   padding-top: 10px;
   margin: 0;
   background-image: url('/image/1.jpg');
+  text-align: center;
 }
 
 table, td {
@@ -59,4 +60,21 @@ td {
   outline: 0;
   border: 0;
   cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item {
+  margin: 10px;
+  text-decoration: none;
+  color: black;
 }

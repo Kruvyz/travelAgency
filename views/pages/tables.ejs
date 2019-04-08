@@ -12,12 +12,14 @@
   <table>
     <tr>
       <% for (let j in data[0]) { %>
+        <% if (j === id) continue %>
         <td><%=j %></td>
       <%} %>
     </tr>
     <% for (let i in data) { %>
       <tr>
         <% for (let j in data[i]) { %>
+          <% if (j === id) continue %>
           <td><%=data[i][j] %></td>
         <%} %>
         <td>
@@ -31,6 +33,7 @@
     <%} %>    
     <tr>      
       <% for (let j in data[0]) { %>
+        <% if (j === id) continue %>
         <td><input class="insertInput" type="text" form="insert" required name="<%=j %>"></td>
       <%} %> 
       <td>

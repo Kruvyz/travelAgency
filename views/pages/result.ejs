@@ -8,6 +8,12 @@
   <title><%=title %></title>
 </head>
 <body>
+  <header>
+    <nav>
+      <a class="nav-item" href="/"><img src="/image/home.png" alt="головна"></a>
+      <a class="nav-item" href="/enterQuery/<%= title[title.length - 1]%>">Змінити критерії</a>
+    </nav>
+  </header>
   <table>
     <tr>
       <% for (let j in data[0]) { %>

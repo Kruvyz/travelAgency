@@ -18,7 +18,9 @@ const config = {
 
 app.get('/tables/:table', (req, res) => {
   const table = req.params.table;
-  const id = `${table.slice(0, table.length - 1)}Id`;
+  const id = table[table.length - 2] === 'e' && table[table.length - 3] === 'i' ?
+  `${table.slice(0, table.length - 3)}yId` :
+  `${table.slice(0, table.length - 1)}Id`;
 
   (async function () {
     try {
@@ -268,27 +270,20 @@ app.post('/query/:num', (req, res) => {
 
         case 7: {
           const hotel = req.body.hotel;
-          const epmloyee = req.body.epmloyee;
+          const employee = req.body.employee;
           const country = req.body.country;
 
           result = await pool.request()
             .query(`
               Select Clients.ClientName, Clients.ClientAddress, Clients.TelephoneNumber
               From SalesForm
-              Left Join Clients
-              On SalesForm.ClientId = Clients.ClientId
-              Left Join Hotels
-              On Hotels.HotelId = SalesForm.HotelId
-              Where SalesForm.HotelId =
-                (Select SalesForm.HotelId
-                From SalesForm
+                Left Join Clients
+                On SalesForm.ClientId = Clients.ClientId
                 Left Join Employees
                 On Employees.EmployeeId = SalesForm.EmployeeId
-                Left Join Countries
-                On SalesForm.CountryId = Countries.CountryId
-                Where Employees.EmployeeName Like '%${epmloyee}%' 
-                and Countries.CountryName Like '%${country}%')
-              And Hotels.HotelName Like '%${hotel}%'            
+              Where CountryName Like '%${country}%'
+              and Employees.EmployeeName Like '%${employee}%' 
+              and HotelName Like '%${hotel}%'          
             `);
           break;
         }
@@ -328,6 +323,7 @@ app.post('/insert/:table', (req, res) => {
   let values = [];
 
   for (item in body) {
+    if (body[item] === '') continue;
     values.push(`'${body[item]}'`);
     row.push(item);
   }
