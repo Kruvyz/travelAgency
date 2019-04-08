@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=title %></title>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <p>
+    Вивести інформацію про готелі (назва готелю, місто, вартість перебування за добу), 
+    що відносяться до заданої категорії та розташовані в певній країні.
+  </p>
+  
+  <form method="POST" action="/query/9">
+    <label for="category">Категорія:</label>
+    <select name="category">
+      <% for (let i of Category) { %>
+        <option value="<%=i.Category %>">
+          <%=i.Category %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="сountry">Країна:</label>
+    <select name="сountry">
+      <% for (let i of CountryName) { %>
+        <option value="<%=i.CountryName %>">
+          <%=i.CountryName %>
+        </option>
+      <% } %> 
+    </select>
+
+    <label for="hotelPrice">Ціна за добу:</label>
+    <select name="hotelPrice">
+      <% for (let i of HotelPrice) { %>
+        <option value="<%=i.HotelPrice %>">
+          <%=i.HotelPrice %>
+        </option>
+      <% } %> 
+    </select>
+
+    <input type="submit" value="Виконати">
+  </form>
+
+</body>
+</html>

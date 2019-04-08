@@ -161,6 +161,25 @@ app.get('/enterQuery/:num', (req, res) => {
           });
           break;
         }
+
+        case 9: {
+          let Category  = await pool.request()
+            .query(`select distinct Category from Hotels`);
+          
+          let CountryName = await pool.request()
+            .query(`select distinct CountryName from Countries`);
+
+          let HotelPrice = await pool.request()
+            .query(`select distinct HotelPrice from Hotels`);
+              
+          res.render('pages/query9.ejs', {
+            Category : Category.recordset,
+            CountryName: CountryName.recordset,
+            HotelPrice: HotelPrice.recordset,
+            title
+          });
+          break;
+        }
       }
       
       sql.close();
@@ -303,6 +322,24 @@ app.post('/query/:num', (req, res) => {
               and City Like '%${city}%'
             `);
           break;
+        }
+
+        case 9: {
+          const category = req.body.category;
+          const сountry = req.body.сountry;
+          const hotelPrice = +req.body.hotelPrice;
+
+          result = await pool.request()
+            .query(`
+              Select HotelName, City
+              From Hotels
+              Left Join Countries
+              On Hotels.CountryId = Countries.CountryId
+              Where Category Like '%${category}%' 
+              and CountryName Like '${сountry}'
+              and HotelPrice >= ${hotelPrice}
+            `);
+            break;
         }
       }      
         
